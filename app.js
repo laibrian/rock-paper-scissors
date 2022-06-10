@@ -27,8 +27,6 @@ function computerPlay() {
 
 function playRound(playerSelection, computerSelection) {
 
-    playerSelection = playerSelection.toLowerCase();
-
     if (playerSelection == computerSelection) {
         console.log("Round Results: Tie!");
     } else if (
@@ -62,9 +60,12 @@ function displayScore(playerScore, cpuScore) {
     console.log("CPU Score: " + cpuScore);
 }
 
+function game() {
+    let playerSelection = prompt("What's your choice? (Type rock, paper or scissors)");
+    playerSelection = playerSelection.toLowerCase();
+    const computerSelection = computerPlay();
+    playRound(playerSelection, computerSelection);
+    displayScore(playerScore, cpuScore);
+}
 
-
-const playerSelection = "scissors";
-const computerSelection = computerPlay();
-playRound(playerSelection, computerSelection);
-displayScore(playerScore, cpuScore);
+game();
