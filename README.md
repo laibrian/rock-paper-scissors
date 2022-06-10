@@ -1,2 +1,2 @@
 # rock-paper-scissors
-TOP rock paper scissors player vs cpu
+Rock paper scissors game (player vs cpu)
