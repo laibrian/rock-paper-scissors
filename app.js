@@ -12,7 +12,6 @@ let cpuScore = 0;
 
 function computerPlay() {
     let cpuChoice = Math.floor(Math.random() * 3);
-    console.log("CPU " + cpuChoice);
 
     if (cpuChoice == 0) {
         console.log("CPU rock");
@@ -37,20 +36,35 @@ function playRound(playerSelection, computerSelection) {
         (playerSelection == "paper" && computerSelection == "rock") ||
         (playerSelection == "scissors" && computerSelection == "paper")
     ) {
-        console.log("Round Results: You Win! " + playerSelection + " beats " + computerSelection);
+        console.log("Round Results: Player Wins! " + playerSelection + " beats " + computerSelection);
         playerScore++;
     } else if (
         (playerSelection == "rock" && computerSelection == "paper") ||
         (playerSelection == "paper" && computerSelection == "scissors") ||
         (playerSelection == "scissors" && computerSelection == "rock")
     ) {
-        console.log("Round Results: You Lose! " + computerSelection + " beats " + playerSelection);
+        console.log("Round Results: Player Loses! " + computerSelection + " beats " + playerSelection);
         cpuScore++;
     }
 }
 
+function displayScore(playerScore, cpuScore) {
+    
+    if (playerScore == 5) {
+        console.log("Player wins the Rock Paper Scissors Game!")
+        return;
+    } else if (cpuScore == 5) {
+        console.log("CPU wins the Rock Paper Scissors Game!")
+        return;
+    }
+    
+    console.log("Player Score: " + playerScore);
+    console.log("CPU Score: " + cpuScore);
+}
+
+
+
 const playerSelection = "scissors";
 const computerSelection = computerPlay();
-console.log(playRound(playerSelection, computerSelection));
-console.log("Player Score: " + playerScore);
-console.log("CPU Score: " + cpuScore);
+playRound(playerSelection, computerSelection);
+displayScore(playerScore, cpuScore);
