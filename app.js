@@ -22,6 +22,7 @@ function computerPlay() {
 }
 
 function playRound(playerSelection, computerSelection) {
+    playerSelection = playerSelection.toLowerCase();
     if (playerSelection == computerSelection) {
         return "Tie game!"
     } else if 
