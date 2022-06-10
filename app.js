@@ -1,6 +1,6 @@
-console.log("Welcome to the Rock Paper Scissors Game");
-console.log("You're against the CPU - What do you choose?");
-console.log("Type in your choice: ");
+// console.log("Welcome to the Rock Paper Scissors Game");
+// console.log("You're against the CPU - What do you choose?");
+// console.log("Type in your choice: ");
 
 /* 
     0 - rock
@@ -10,21 +10,32 @@ console.log("Type in your choice: ");
 
 function computerPlay() {
     let cpuChoice = Math.floor(Math.random() * 3);
+    console.log("CPU " + cpuChoice);
 
-    if (cpuChoice === 0) {
+    if (cpuChoice == 0) {
         return "rock";
-    } else if (cpuChoice === 1) {
+    } else if (cpuChoice == 1) {
         return "paper";
-    } else {
+    } else if (cpuChoice == 2) {
         return "scissors";
     }
 }
 
-console.log(computerPlay());
+function playRound(playerSelection, computerSelection) {
+    if (playerSelection == computerSelection) {
+        return "Tie game!"
+    } else if 
+        ((playerSelection == "rock" && computerSelection == "paper") ||
+        (playerSelection == "paper" && computerSelection == "scissors") ||
+        (playerSelection == "scissors" && computerSelection == "rock"))
+    {
+        return "You Lose! " + computerSelection + " beats " + playerSelection;
+    } else {
+        return "You Win! " + playerSelection + " beats " + computerSelection;
+    }
+}
 
-// function playRound(playerSelection, computerSelection) {
-
-// }
-// const playerSelection = "rock";
-// const computerSelection = computerPlay();
+const playerSelection = "scissors";
+const computerSelection = computerPlay();
+console.log(playRound(playerSelection, computerSelection));
 
