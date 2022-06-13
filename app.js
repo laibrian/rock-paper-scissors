@@ -26,7 +26,7 @@ function computerPlay() {
 }
 
 function playRound(playerSelection, computerSelection) {
-
+    
     if (playerSelection == computerSelection) {
         console.log("Round Results: Tie!");
     } else if (
@@ -60,12 +60,18 @@ function displayScore(playerScore, cpuScore) {
     console.log("CPU Score: " + cpuScore);
 }
 
+// TODO later: modify game win to first to get 5 wins instead of Bo5
+// Need to consider if there are an equal number of wins
 function game() {
-    let playerSelection = prompt("What's your choice? (Type rock, paper or scissors)");
-    playerSelection = playerSelection.toLowerCase();
-    const computerSelection = computerPlay();
-    playRound(playerSelection, computerSelection);
-    displayScore(playerScore, cpuScore);
+    for (let i = 0; i < 5; i++) {
+        let playerSelection = prompt("Welcome to Rock Paper Scissors!" 
+        + "\nYou're against the computer (CPU) & Best out of 5 wins"
+        + "\nWhat's your choice? (Type either rock, paper, or scissors)");
+        
+        const computerSelection = computerPlay();
+        playRound(playerSelection, computerSelection);
+        displayScore(playerScore, cpuScore);
+    }
 }
 
 game();
