@@ -1,5 +1,6 @@
 let playerScore = 0;
-let cpuScore = 0;
+let computerScore = 0;
+let roundWinner = '';
 
 /* 
     0 - rock
@@ -8,16 +9,16 @@ let cpuScore = 0;
 */
 
 function computerPlay() {
-    let cpuChoice = Math.floor(Math.random() * 3);
+    let computerChoice = Math.floor(Math.random() * 3);
 
-    if (cpuChoice == 0) {
-        console.log("CPU rock");
+    if (computerChoice == 0) {
+        console.log("computer rock");
         return "rock";
-    } else if (cpuChoice == 1) {
-        console.log("CPU paper");
+    } else if (computerChoice == 1) {
+        console.log("computer paper");
         return "paper";
-    } else if (cpuChoice == 2) {
-        console.log("CPU Scissors");
+    } else if (computerChoice == 2) {
+        console.log("computer Scissors");
         return "scissors";
     }
 }
@@ -26,6 +27,7 @@ function playRound(playerSelection, computerSelection) {
     
     if (playerSelection == computerSelection) {
         console.log("Round Results: Tie!");
+        roundWinner = 'tie';
     } else if (
         (playerSelection == "rock" && computerSelection == "scissors") ||
         (playerSelection == "paper" && computerSelection == "rock") ||
@@ -33,28 +35,45 @@ function playRound(playerSelection, computerSelection) {
     ) {
         console.log("Round Results: Player Wins! " + playerSelection + " beats " + computerSelection);
         playerScore++;
+        roundWinner = 'player';
     } else if (
         (playerSelection == "rock" && computerSelection == "paper") ||
         (playerSelection == "paper" && computerSelection == "scissors") ||
         (playerSelection == "scissors" && computerSelection == "rock")
     ) {
         console.log("Round Results: Player Loses! " + computerSelection + " beats " + playerSelection);
-        cpuScore++;
+        computerScore++;
+        roundWinner = 'computer';
     }
+    updateScoreMessage(roundWinner, playerSelection, computerSelection);
 }
 
-function displayScore(playerScore, cpuScore) {
+function displayScore(playerScore, computerScore) {
     
     if (playerScore == 5) {
         console.log("Player wins the Rock Paper Scissors Game!")
         return;
-    } else if (cpuScore == 5) {
-        console.log("CPU wins the Rock Paper Scissors Game!")
+    } else if (computerScore == 5) {
+        console.log("computer wins the Rock Paper Scissors Game!")
         return;
     }
     
     console.log("Player Score: " + playerScore);
-    console.log("CPU Score: " + cpuScore);
+    console.log("computer Score: " + computerScore);
+}
+
+function updateScoreMessage(winner, playerSelection, computerSelection) {
+    if (winner === 'player') {
+        // update text to show "{player's choice} beats {computer's choice}"
+        
+    }
+
+    if (winner === 'computer') {
+        // update text to show "{computer's choice} beats {player's choice}"
+    }
+
+    // if tie:
+    // update text to show "{player's choice} ties with {computer's choice}"
 }
 
 // TODO later: modify game win to first to get 5 wins instead of Bo5
@@ -66,6 +85,7 @@ game();
 
 // UI
 
+const scoreMessage = document.querySelector('.scoreMessage');
 const rockBtn = document.querySelector('.rock');
 const paperBtn = document.querySelector('.paper');
 const scissorsBtn = document.querySelector('.scissors');
@@ -73,17 +93,17 @@ const scissorsBtn = document.querySelector('.scissors');
 rockBtn.addEventListener('click', () => {
     const computerSelection = computerPlay();
     playRound("rock", computerSelection);
-    displayScore(playerScore, cpuScore);
+    displayScore(playerScore, computerScore);
 });
 
 paperBtn.addEventListener('click', () => {
     const computerSelection = computerPlay();
     playRound("paper", computerSelection);
-    displayScore(playerScore, cpuScore);
+    displayScore(playerScore, computerScore);
 });
 
 scissorsBtn.addEventListener('click', () => {
     const computerSelection = computerPlay();
     playRound("scissors", computerSelection);
-    displayScore(playerScore, cpuScore);
+    displayScore(playerScore, computerScore);
 });
