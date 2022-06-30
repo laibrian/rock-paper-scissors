@@ -1,14 +1,32 @@
-// console.log("Welcome to the Rock Paper Scissors Game");
-// console.log("You're against the CPU - What do you choose?");
-// console.log("Type in your choice: ");
+let playerScore = 0;
+let cpuScore = 0;
+
+const rockBtn = document.querySelector('#rock');
+rockBtn.addEventListener('click', () => {
+    const computerSelection = computerPlay();
+    playRound("rock", computerSelection);
+    displayScore(playerScore, cpuScore);
+});
+
+const paperBtn = document.querySelector('#paper');
+paperBtn.addEventListener('click', () => {
+    const computerSelection = computerPlay();
+    playRound("paper", computerSelection);
+    displayScore(playerScore, cpuScore);
+});
+
+const scissorsBtn = document.querySelector('#scissors');
+scissorsBtn.addEventListener('click', () => {
+    const computerSelection = computerPlay();
+    playRound("scissors", computerSelection);
+    displayScore(playerScore, cpuScore);
+});
 
 /* 
     0 - rock
     1 - paper
     2 - scissors
 */
-let playerScore = 0;
-let cpuScore = 0;
 
 function computerPlay() {
     let cpuChoice = Math.floor(Math.random() * 3);
@@ -61,17 +79,8 @@ function displayScore(playerScore, cpuScore) {
 }
 
 // TODO later: modify game win to first to get 5 wins instead of Bo5
-// Need to consider if there are an equal number of wins
 function game() {
-    for (let i = 0; i < 5; i++) {
-        let playerSelection = prompt("Welcome to Rock Paper Scissors!" 
-        + "\nYou're against the computer (CPU) & Best out of 5 wins"
-        + "\nWhat's your choice? (Type either rock, paper, or scissors)");
-        
-        const computerSelection = computerPlay();
-        playRound(playerSelection, computerSelection);
-        displayScore(playerScore, cpuScore);
-    }
+
 }
 
 game();
