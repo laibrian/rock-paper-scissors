@@ -1,27 +1,6 @@
 let playerScore = 0;
 let cpuScore = 0;
 
-const rockBtn = document.querySelector('#rock');
-rockBtn.addEventListener('click', () => {
-    const computerSelection = computerPlay();
-    playRound("rock", computerSelection);
-    displayScore(playerScore, cpuScore);
-});
-
-const paperBtn = document.querySelector('#paper');
-paperBtn.addEventListener('click', () => {
-    const computerSelection = computerPlay();
-    playRound("paper", computerSelection);
-    displayScore(playerScore, cpuScore);
-});
-
-const scissorsBtn = document.querySelector('#scissors');
-scissorsBtn.addEventListener('click', () => {
-    const computerSelection = computerPlay();
-    playRound("scissors", computerSelection);
-    displayScore(playerScore, cpuScore);
-});
-
 /* 
     0 - rock
     1 - paper
@@ -84,3 +63,27 @@ function game() {
 }
 
 game();
+
+// UI
+
+const rockBtn = document.querySelector('.rock');
+const paperBtn = document.querySelector('.paper');
+const scissorsBtn = document.querySelector('.scissors');
+
+rockBtn.addEventListener('click', () => {
+    const computerSelection = computerPlay();
+    playRound("rock", computerSelection);
+    displayScore(playerScore, cpuScore);
+});
+
+paperBtn.addEventListener('click', () => {
+    const computerSelection = computerPlay();
+    playRound("paper", computerSelection);
+    displayScore(playerScore, cpuScore);
+});
+
+scissorsBtn.addEventListener('click', () => {
+    const computerSelection = computerPlay();
+    playRound("scissors", computerSelection);
+    displayScore(playerScore, cpuScore);
+});
