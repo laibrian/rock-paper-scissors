@@ -91,6 +91,7 @@ scissorsBtn.addEventListener('click', () => {
 function playGame(playerSelection) {
     const computerSelection = computerPlay();
     playRound(playerSelection, computerSelection);
+    updateScoreResults();
 
     // if (playerScore === 5 || computerScore === 5) {
     //     console.log("Game Over!");
