@@ -42,6 +42,16 @@ function playRound(playerSelection, computerSelection) {
     updateScoreMessage(roundWinner, playerSelection, computerSelection);
 }
 
+function resetGame(lastWinner) {
+    alert(`GAME OVER! ${lastWinner} won!`);
+    playerScore = 0;
+    computerScore = 0;
+    scoreResults.textContent = "First to 5 points wins";
+    scoreMessage.textContent = "What's your choice?";
+    playerScoreCounter.textContent = "Player: 0";
+    computerScoreCounter.textContent = "CPU: 0";
+}
+
 function updateScoreResults() {
     if (roundWinner === "tie") {
         scoreResults.textContent = "Tie!";
@@ -93,17 +103,11 @@ function playGame(playerSelection) {
     playRound(playerSelection, computerSelection);
     updateScoreResults();
 
-    // if (playerScore === 5 || computerScore === 5) {
-    //     console.log("Game Over!");
-    //     //alert("Game Over");
-    //     //playerScore = 0;
-    //     //computerScore = 0;
-    // }
-}
+    if (playerScore === 5) {
+        resetGame("Player");
+    }
 
-// rockBtn.addEventListener('click', () => {
-//     playGame("rock")
-//     const computerSelection = computerPlay();
-//     playRound("rock", computerSelection);
-//     displayScore(playerScore, computerScore);
-// });
+    if (computerScore === 5) {
+        resetGame("Computer");
+    }
+}
